@@ -13,8 +13,10 @@ app.use(express.static("public"));
 
 
 
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes")(app); 
+let api_routes = require("./routes/api-routes");
+let html_routes = require("./routes/html-routes");
+app.use(api_routes);
+app.use(html_routes);
 
 mongoose.connect("mongodb://localhost/workout", {
   useNewUrlParser: true,
